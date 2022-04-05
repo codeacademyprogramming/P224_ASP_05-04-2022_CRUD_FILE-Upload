@@ -1,0 +1,14 @@
+﻿<h4><span>Cart Summary</span></h4>
+@model List<BasketVM>
+
+@{
+                                                    double total = 0;
+
+                                                    foreach (BasketVM basketVM in Model)
+                                                    {
+                                                        total += (basketVM.Count * basketVM.Price);
+                                                    }
+                                                }
+									<p>Sub Total <span class="text-primary">$@total.ToString("F2")</span></p>
+									<p>Shipping Cost <span class="text-primary">$00.00</span></p>
+									<h2>Grand Total <span class="text-primary">$@total.ToString("F2")</span></h2>

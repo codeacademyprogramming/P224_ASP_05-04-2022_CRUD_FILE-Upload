@@ -1,0 +1,107 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Update";
+    var a = Model;
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Create Product</h1>
+    </div>
+</div>
+<div class="row justify-content-lg-center">
+    <div class="col-lg-8">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input class="form-control" asp-for="Title" placeholder="Enter Title">
+                <span class="text-danger" asp-validation-for="Title"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <input class="form-control" asp-for="Price" placeholder="Enter Price">
+                <span class="text-danger" asp-validation-for="Price"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiscountPrice"></label>
+                <input class="form-control" asp-for="DiscountPrice" placeholder="Enter DiscountPrice">
+                <span class="text-danger" asp-validation-for="DiscountPrice"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainImage"></label>
+                <input class="form-control" asp-for="MainImage" placeholder="Enter MainImage">
+                <span class="text-danger" asp-validation-for="MainImage"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HoverImage"></label>
+                <input class="form-control" asp-for="HoverImage" placeholder="Enter HoverImage">
+                <span class="text-danger" asp-validation-for="HoverImage"></span>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" asp-for="IsFeature" placeholder="Enter IsFeature">
+                <label class="form-check-label" asp-for="IsFeature"></label>
+                <span class="text-danger" asp-validation-for="IsFeature"></span>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" asp-for="IsArrival" placeholder="Enter IsArrival">
+                <label class="form-check-label" asp-for="IsArrival"></label>
+                <span class="text-danger" asp-validation-for="IsArrival"></span>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" asp-for="IsMostView" placeholder="Enter IsMostView">
+                <label class="form-check-label" asp-for="IsMostView"></label>
+                <span class="text-danger" asp-validation-for="IsMostView"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorId"></label>
+                <select class="form-control" asp-for="AuthorId">
+                    <option value="" >Choose...</option>
+                    @foreach (Author author in ViewBag.Authors)
+                    {
+                        if (author.Id == Model.AuthorId)
+                        {
+                            <option selected value="@author.Id">@author.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@author.Id">@author.Name</option>
+                        }
+                    }
+                </select>
+                <span class="text-danger" asp-validation-for="AuthorId"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenreId"></label>
+                <select class="form-control" asp-for="GenreId">
+                    <option value="">Choose...</option>
+                    @foreach (Genre genre in ViewBag.Genres)
+                    {
+
+                        if (genre.Id == Model.GenreId)
+                        {
+                             <option selected value="@genre.Id">@genre.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@genre.Id">@genre.Name</option>
+                        }
+                        
+                    }
+                </select>
+                <span class="text-danger" asp-validation-for="GenreId"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <a class="btn btn-primary" asp-action="Index">Go To List</a>
+    </div>
+</div>
+
+@section Script{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+}
